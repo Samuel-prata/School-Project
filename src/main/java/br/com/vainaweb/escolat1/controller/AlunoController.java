@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,15 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.service.annotation.DeleteExchange;
 
 import br.com.vainaweb.escolat1.dto.DadosAluno;
-import br.com.vainaweb.escolat1.dto.DadosColaborador;
 import br.com.vainaweb.escolat1.model.AlunoModel;
-import br.com.vainaweb.escolat1.model.ColaboradorModel;
 import br.com.vainaweb.escolat1.repository.AlunoRepository;
 import br.com.vainaweb.escolat1.service.AlunoService;
-import br.com.vainaweb.escolat1.service.ColaboradorService;
 import jakarta.validation.Valid;
 
 @RestController
