@@ -16,7 +16,7 @@ import br.com.vainaweb.escolat1.model.ColaboradorModel;
 import br.com.vainaweb.escolat1.service.ColaboradorService;
 
 @RestController
-@RequestMapping("/colaborador-teste")
+@RequestMapping("/colaboradores")
 
 // Classe responsavel por receber requisições e retornar respostas
 public class ColaboradorController {

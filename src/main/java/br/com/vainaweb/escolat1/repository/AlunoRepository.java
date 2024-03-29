@@ -5,13 +5,14 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import br.com.vainaweb.escolat1.model.AlunoModel;
 import br.com.vainaweb.escolat1.model.ColaboradorModel;
 
 @Repository
-public interface ColaboradorRepository extends JpaRepository <ColaboradorModel, Long> {
+public interface AlunoRepository extends JpaRepository <AlunoModel, Long> {
 	
-	Optional<ColaboradorModel> findByCpf(String cpf);
+	Optional<AlunoModel> findByCpf(String cpf);
 
-	Optional<ColaboradorModel> findByEmail(String email);
+	Optional<AlunoModel> findByEmail(String email);
 	
 }

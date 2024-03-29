@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.vainaweb.escolat1.dto.DadosColaborador;
 import br.com.vainaweb.escolat1.model.ColaboradorModel;
 import br.com.vainaweb.escolat1.repository.ColaboradorRepository;
+import lombok.experimental.var;
 
 @Service // Classe de serviço gerenciada pelo Spring
 public class ColaboradorService {
@@ -22,9 +23,10 @@ public class ColaboradorService {
 	}
 
 	public String cadastrar(DadosColaborador dados) {
-		var colaboradorExistente = repository.findByCpf(dados.cpf());
+		var cpfExistente = repository.findByCpf(dados.cpf());
+		var emailExistente = repository.findByEmail(dados.email());
 		
-		if (dados.cpf() == colaboradorExistente.get().getCpf()) {
+		if (cpfExistente.isPresent() || emailExistente.isPresent() ) {
 			return "Colaborador ja existente";
 		} else {
 			var colaborador = new ColaboradorModel(dados.nome(), dados.email(), dados.cpf(), dados.cargo());
