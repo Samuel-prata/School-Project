@@ -19,7 +19,7 @@ public class SwaggerConfig {
 	@Bean
 	public OpenAPI SpringBootOpenAPI() {
 		return new OpenAPI().info(new Info().title("Escola Vai Na web")
-				.description("Proposta de desafio").version("v1.0")
+				.description("Proposta de desafio final para alunos do curso de Back-end da escola Vai na Web").version("v1.0")
 				.license(new License().name("Vai na Web").url("https://vainaweb.com.br/"))
 				.contact(new Contact().name("Samuel Silverio")
 						.url("https://github.com/Samuel-prata")

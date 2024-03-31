@@ -33,21 +33,25 @@ public class AlunoController {
 	private AlunoRepository repository;
 
 	@GetMapping
-	public List<AlunoModel> listarTodosColaboradores() {
+	public List<AlunoModel> pegarTodos() {
 		return service.encontrarTodos();
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<AlunoModel> listarPorId(@PathVariable Long id) {
+	public ResponseEntity<AlunoModel> pegarPorId(@PathVariable Long id) {
 		return repository.findById(id).
 				map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
-	@ResponseStatus(code = HttpStatus.CREATED)
-	@PostMapping
+	@PostMapping("/cadastrar")
 	public ResponseEntity<String> cadastrar(@RequestBody  @Valid DadosAluno dados) {
 		return service.cadastrar(dados);
+	}
+	
+	
+	public void atualizar() {
+		
 	}
 	
 	@DeleteMapping("/{id}")
