@@ -5,6 +5,7 @@ import java.util.Objects;
 import org.hibernate.validator.constraints.br.CPF;
 
 import br.com.vainaweb.escolat1.dto.DadosAtualizados;
+import br.com.vainaweb.escolat1.dto.EnderecoDTO;
 import br.com.vainaweb.escolat1.enums.Cargo;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -48,11 +49,13 @@ public class ColaboradorModel {
 
 	}
 
-	public ColaboradorModel(String nome, String email, String cpf, Cargo cargo) {
+	public ColaboradorModel(String foto,String nome, String email, String cpf, Cargo cargo, EnderecoDTO endereco) {
+		this.foto = foto;
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
 		this.cargo = cargo;
+		this.endereco = new Endereco(endereco);
 	}
 
 

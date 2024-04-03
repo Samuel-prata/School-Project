@@ -11,20 +11,21 @@ import org.springframework.stereotype.Service;
 import br.com.vainaweb.escolat1.dto.DadosAluno;
 import br.com.vainaweb.escolat1.model.AlunoModel;
 import br.com.vainaweb.escolat1.repository.AlunoRepository;
+import jakarta.validation.Valid;
 
 @Service
 public class AlunoService {
 	@Autowired
 	private AlunoRepository repository;
 
-	public ResponseEntity<String> cadastrar(DadosAluno dados) {
+	public ResponseEntity<String> cadastrar( @Valid DadosAluno dados) {
 		Optional<AlunoModel> cpfExistente = repository.findByCpf(dados.cpf());
 		Optional<AlunoModel> emailExistente = repository.findByEmail(dados.email());
 		
 		if (cpfExistente.isPresent() || emailExistente.isPresent() ) {
 			return ResponseEntity.badRequest().body("Colaborador Ja existente");
 		} else {
-			AlunoModel colaborador = new AlunoModel(dados.nome(), dados.email(), dados.cpf(), dados.curso());
+			AlunoModel colaborador = new AlunoModel(dados.foto(),dados.nome(), dados.email(), dados.cpf(), dados.curso(), dados.endereco());
 			repository.save(colaborador);
 			return ResponseEntity.status(HttpStatus.CREATED).body("Cadastro feito com sucesso");
 		}

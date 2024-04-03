@@ -44,7 +44,7 @@ public class AlunoController {
 	}
 
 	@PostMapping("/cadastrar")
-	public ResponseEntity<String> cadastrar(@RequestBody  @Valid DadosAluno dados) {
+	public ResponseEntity<String> cadastrar(@RequestBody @Valid DadosAluno dados) {
 		return service.cadastrar(dados);
 	}
 	

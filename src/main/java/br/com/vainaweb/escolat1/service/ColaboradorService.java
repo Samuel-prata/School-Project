@@ -36,7 +36,7 @@ public class ColaboradorService {
 		if (cpfExistente.isPresent() || emailExistente.isPresent() ) {
 			return Optional.empty();
 		} else {
-			ColaboradorModel colaborador = new ColaboradorModel(dados.nome(), dados.email(), dados.cpf(), dados.cargo());
+			ColaboradorModel colaborador = new ColaboradorModel(dados.foto(), dados.nome(), dados.email(), dados.cpf(), dados.cargo(), dados.endereco());
 			
 			return Optional.of(repository.save(colaborador));
 		}

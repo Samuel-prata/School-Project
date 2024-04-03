@@ -5,6 +5,7 @@ import java.util.Objects;
 import org.hibernate.validator.constraints.br.CPF;
 
 import br.com.vainaweb.escolat1.dto.DadosAtualizados;
+import br.com.vainaweb.escolat1.dto.EnderecoDTO;
 import br.com.vainaweb.escolat1.enums.Curso;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -47,11 +48,13 @@ public class AlunoModel {
 		
 	}
 	
-	public AlunoModel(String nome, String email, String cpf, Curso curso) {
+	public AlunoModel(String foto, String nome, String email, String cpf, Curso curso, EnderecoDTO endereco) {
+		this.foto = foto;
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
 		this.curso = curso;
+		this.endereco = new Endereco(endereco);
 	}
 
 	// |-----------------------------GETTER E
@@ -130,9 +133,10 @@ public class AlunoModel {
 	}
 
 	public void atualizarInfo(@Valid DadosAtualizados dados) {
-		this.foto = dados.foto();
-		this.nome = dados.nome();
-		this.email = dados.email();
+		this.foto = dados.foto() != null ? dados.foto(): this.foto;
+		this.nome = dados.nome() != null ? dados.nome(): this.nome;
+		this.email = dados.email() != null ? dados.email(): this.email;
+		
 	}
 	
 	
