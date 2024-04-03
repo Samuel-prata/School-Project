@@ -45,7 +45,7 @@ public class SwaggerConfig {
 				apiResponses.addApiResponse("200", createApiResponse("Sucesso"));
 				apiResponses.addApiResponse("201", createApiResponse("Objeto persistido"));
 				apiResponses.addApiResponse("204", createApiResponse("Objeto Excluido"));
-				apiResponses.addApiResponse("400", createApiResponse("Erro na requisiçãos"));
+				apiResponses.addApiResponse("400", createApiResponse("Erro na requisições"));
 				apiResponses.addApiResponse("401", createApiResponse("Acesso não autorizado"));
 				apiResponses.addApiResponse("404", createApiResponse("Objeto não encontrado"));
 				apiResponses.addApiResponse("500", createApiResponse("Erro na aplicação"));

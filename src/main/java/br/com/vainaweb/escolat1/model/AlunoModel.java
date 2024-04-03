@@ -1,8 +1,10 @@
 package br.com.vainaweb.escolat1.model;
 
+import java.util.Objects;
+
 import org.hibernate.validator.constraints.br.CPF;
 
-import br.com.vainaweb.escolat1.enums.Cargo;
+import br.com.vainaweb.escolat1.dto.DadosAtualizados;
 import br.com.vainaweb.escolat1.enums.Curso;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -11,16 +13,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 //Anotação que diz que essa classe é uma entidade
 @Entity
-@Table(name = "tb_colaboradores")
+@Table(name = "tb_alunos")
 // será a classe responsavel pela entidade
 public class AlunoModel {
 
@@ -37,10 +35,10 @@ public class AlunoModel {
 	@Column(unique = true)
 	@CPF(message = "precisa ser um cpf válido") // Valida como um CPF
 	private String cpf;
+	
 	private Curso curso;
 
-	@Embedded // Incorpora a classe na entidade (OS ATRIBUTOS DESSA CLASSA SERÃO PARTE DA
-				// MINHA TABELA)
+	@Embedded // Incorpora a classe na entidade (OS ATRIBUTOS DESSA CLASSA SERÃO PARTE DA Minha tabela)
 	private Endereco endereco;
 
 	// |------------------------------------------CONSTRUTORES--------------------------------------|
@@ -113,4 +111,30 @@ public class AlunoModel {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cpf, email, id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AlunoModel other = (AlunoModel) obj;
+		return Objects.equals(cpf, other.cpf) && Objects.equals(email, other.email) && Objects.equals(id, other.id);
+	}
+
+	public void atualizarInfo(@Valid DadosAtualizados dados) {
+		this.foto = dados.foto();
+		this.nome = dados.nome();
+		this.email = dados.email();
+	}
+	
+	
+	
 }

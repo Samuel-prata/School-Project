@@ -17,12 +17,6 @@ public class AlunoService {
 	@Autowired
 	private AlunoRepository repository;
 
-	public List<AlunoModel> encontrarTodos() {
-
-		// Método da Repository que faz a query -> SELECT * FROM nome_da_tabela
-		return repository.findAll();
-	}
-
 	public ResponseEntity<String> cadastrar(DadosAluno dados) {
 		Optional<AlunoModel> cpfExistente = repository.findByCpf(dados.cpf());
 		Optional<AlunoModel> emailExistente = repository.findByEmail(dados.email());
